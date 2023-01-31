@@ -9,10 +9,17 @@ public class Consumer {
         this.queue = queue;
     }
 
-    void consume() throws InterruptedException {
-        while (true) {
-            String got = queue.take();
-            System.out.println(got);
+    public void consume()  {
+        try {
+            while (true) {
+                String got = queue.take();
+                if (got.equals("end")) {
+                    break;
+                }
+                System.out.println("consumed "+ got);
+            }
+        } catch (Exception e) {
+
         }
     }
 }
